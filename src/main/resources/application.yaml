@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+application:
+  properties:
+    responseTimeout: 60000
+    connectionTimeout: 60000
+    httpClientLogLevel: DEBUG
+  logging:
+    level: DEBUG

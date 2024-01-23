@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+
+    <springProperty scope="context" name="APP_LOG_LEVEL" source="application.logging.level"/>
+
+    <springProperty scope="context" name="app" source="spring.application.name"/>
+    <springProperty name="version" source="info.version"/>
+
+
+    <appender name="CONSOLE-COLORED" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>${CONSOLE_LOG_CHARSET}</charset>
+        </encoder>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %boldMagenta(%d{ISO8601}) %highlight(%-5level) [%green(%t)] %yellow(%lo).%cyan(%M:%line): %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.poorya.test" level="${APP_LOG_LEVEL}" additivity="true"/>
+    <logger name="org.apache.cxf" level="${APP_LOG_LEVEL}" additivity="true"/>
+    <logger name="sun.util.logging" level="WARN" additivity="true"/>
+    <logger name="sun.rmi.runtime.Log" level="WARN" additivity="true"/>
+    <logger name="ch.qos.logback" level="WARN" additivity="true"/>
+    <logger name="com.codehale" level="WARN" additivity="true"/>
+    <logger name="org.apache" level="WARN" additivity="true"/>
+    <logger name="com.github" level="WARN" additivity="true"/>
+    <logger name="org.hibernate" level="WARN" additivity="true"/>
+    <logger name="com.netflix" level="WARN" additivity="true"/>
+    <logger name="com.nordea" level="INFO" additivity="true"/>
+    <logger name="com.sun.xml" level="WARN" additivity="true"/>
+    <logger name="com.sun.xml.internal.ws" level="WARN" additivity="true"/>
+    <logger name="com.zaxxer.hikari" level="WARN" additivity="true"/>
+    <logger name="de.codecentric" level="WARN" additivity="true"/>
+    <logger name="javax.xml.bind" level="WARN" additivity="true"/>
+    <logger name="jndi" level="WARN" additivity="true"/>
+    <logger name="org.apache" level="WARN" additivity="true"/>
+    <logger name="org.eclipse" level="WARN" additivity="true"/>
+    <logger name="org.flywaydb" level="WARN" additivity="true"/>
+    <logger name="org.hibernate" level="WARN" additivity="true"/>
+    <logger name="org.springframework" level="INFO" additivity="true"/>
+    <logger name="org.springframework.web" level="INFO" additivity="true"/>
+    <logger name="org.apache" level="WARN" additivity="true"/>
+    <logger name="springfox" level="WARN" additivity="true"/>
+
+    <!--Root loggers-->
+    <root level="${APP_LOG_LEVEL}" additivity="true">
+        <appender-ref ref="CONSOLE-COLORED"/>
+    </root>
+
+</configuration>
